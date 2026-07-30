@@ -1,0 +1,46 @@
+# Lineage
+
+> Lineage, Inc. is the world's largest temperature-controlled warehousing and logistics REIT, operating a global cold-chain network of more than 480 facilities across North America, Europe and Asia-Pacific. It provides cold storage warehousing, food manufacturing and processing support, freight forwarding, customs brokerage, drayage, managed transportation and multi-vendor consolidation for food and pharmaceutical supply chains. Lineage is publicly traded on Nasdaq (LINE).
+
+## Developer status
+
+Lineage publishes **no public API, no developer portal, and no API documentation**. Customer integration is handled commercially through the Lineage Link platform and through account teams, not through a self-service developer program. As of 2026-07-19 no OpenAPI, AsyncAPI, GraphQL schema, SDK, CLI, MCP server, webhook catalog, sandbox, changelog or status page was found on any Lineage-operated host. This file exists so agents do not go looking for a developer surface that is not there.
+
+## Products
+
+- [Lineage Link](https://www.onelineage.com/lineage-link): Customer supply chain platform giving real-time visibility into inventory, orders, appointments and shipment status across the Lineage facility network; supports pickup/delivery scheduling, reporting and dashboards, inventory holds, and integration with customer WMS. Available across 200+ locations in eight countries.
+- [Innovation & Technology](https://www.onelineage.com/about-us/innovation-technology): Overview of Lineage's proprietary technology, including Sybil (patented warehouse and inventory-placement optimization algorithm) and Lineage Eye (AI computer-vision automated receiving).
+- [Services](https://www.onelineage.com/services): Cold storage warehousing, automated warehousing, built-to-suit warehousing, port-centric warehousing, blast freezing, food manufacturing and processing, direct-to-consumer fulfillment.
+- [Global Integrated Solutions](https://www.onelineage.com/services/global-integrated-solutions): Freight forwarding, customs brokerage, drayage, managed transportation, temperature-controlled rail, LTL and multi-vendor consolidation.
+
+## Access
+
+- [Customer login](https://www.onelineage.com/customer-login): Entry point for Lineage Link customers.
+- [Lineage Link Help](https://lineagelinkhelp.onelineage.com/support/s/): Salesforce Experience Cloud support community for Lineage Link users.
+- [Contact sales](https://www.onelineage.com/contact-sales): Commercial route to a Lineage Link or integration engagement.
+- [Contact](https://www.onelineage.com/contact): General contact.
+
+## Identity surface
+
+Lineage operates two verified OpenID Connect issuers behind its customer portals. Both are end-user portal SSO, not programmatic API authentication.
+
+- [Lineage Link CIAM discovery](https://lineage-ciam.us.auth0.com/.well-known/openid-configuration): Auth0 tenant behind the custom domain ciam.lineageapps.com; supports authorization_code, client_credentials, refresh_token and device_code grants with PKCE (S256).
+- [Lineage Link Help discovery](https://lineagelinkhelp.onelineage.com/.well-known/openid-configuration): Salesforce Experience Cloud issuer for the support community.
+
+## Repo artifacts
+
+- [Well-known index](well-known/lineage-well-known.yml): Probe results for /.well-known/* across all Lineage-operated hosts.
+- [Authentication profile](authentication/lineage-authentication.yml): The two OIDC issuers, endpoints and supported methods.
+- [OAuth scopes](scopes/lineage-scopes.yml): Scopes advertised by both discovery documents, flagged as vendor platform defaults.
+- [Conformance](conformance/lineage-conformance.yml): Standards asserted from discovery documents and domain probes.
+- [Domain security](security/lineage-domain-security.yml): Probed TLS, HSTS, DNSSEC, CAA, SPF and DMARC posture.
+
+## Corporate
+
+- [About Lineage](https://www.onelineage.com/about-us)
+- [Investor relations](https://ir.onelineage.com/overview/default.aspx)
+- [News and stories](https://www.onelineage.com/news-stories)
+- [Careers](https://careers.onelineage.com/)
+- [Ethics and compliance](https://www.onelineage.com/ethics-compliance)
+- [Terms and conditions](https://www.onelineage.com/terms-and-conditions)
+- [Privacy notice](https://www.onelineage.com/privacy-notice)

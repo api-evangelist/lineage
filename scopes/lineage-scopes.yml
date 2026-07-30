@@ -1,0 +1,125 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  scopes_supported advertised by the OIDC discovery documents at
+  https://lineage-ciam.us.auth0.com/.well-known/openid-configuration and
+  https://lineagelinkhelp.onelineage.com/.well-known/openid-configuration
+  (fetched 2026-07-19)
+caveat: >-
+  Lineage publishes no scopes/permissions reference page and no public API. Every
+  scope below is the PLATFORM DEFAULT advertised by the underlying identity vendor
+  (Auth0 for the Lineage Link CIAM tenant, Salesforce Experience Cloud for the
+  Lineage Link Help community) — none is a Lineage-authored, product-specific
+  scope. Recorded as observed discovery data, not as a documented Lineage
+  authorization model.
+docs: null
+schemes:
+- name: LineageLinkCIAM
+  provider: Auth0
+  issuer: https://lineage-ciam.us.auth0.com/
+  source: well-known/lineage-ciam-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://lineage-ciam.us.auth0.com/authorize
+    tokenUrl: https://lineage-ciam.us.auth0.com/oauth/token
+  - flow: clientCredentials
+    tokenUrl: https://lineage-ciam.us.auth0.com/oauth/token
+  - flow: deviceCode
+    deviceAuthorizationUrl: https://lineage-ciam.us.auth0.com/oauth/device/code
+    tokenUrl: https://lineage-ciam.us.auth0.com/oauth/token
+- name: LineageLinkHelpCommunity
+  provider: Salesforce Experience Cloud
+  issuer: https://lineagelinkhelp.onelineage.com/support
+  source: well-known/lineage-linkhelp-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://lineagelinkhelp.onelineage.com/support/services/oauth2/authorize
+    tokenUrl: https://lineagelinkhelp.onelineage.com/support/services/oauth2/token
+scopes:
+- scope: openid
+  description: OpenID Connect authentication; returns an ID token.
+  standard: true
+  schemes: [LineageLinkCIAM, LineageLinkHelpCommunity]
+- scope: profile
+  description: Basic profile claims for the authenticated user.
+  standard: true
+  schemes: [LineageLinkCIAM, LineageLinkHelpCommunity]
+- scope: email
+  description: Email address claim.
+  standard: true
+  schemes: [LineageLinkCIAM, LineageLinkHelpCommunity]
+- scope: phone
+  description: Phone number claim.
+  standard: true
+  schemes: [LineageLinkCIAM, LineageLinkHelpCommunity]
+- scope: address
+  description: Address claim.
+  standard: true
+  schemes: [LineageLinkCIAM, LineageLinkHelpCommunity]
+- scope: offline_access
+  description: Issue a refresh token for long-lived access.
+  standard: true
+  schemes: [LineageLinkCIAM, LineageLinkHelpCommunity]
+- scope: name
+  description: Full name claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: given_name
+  description: Given name claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: family_name
+  description: Family name claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: nickname
+  description: Nickname claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: email_verified
+  description: Email verification status claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: picture
+  description: Profile picture claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: created_at
+  description: Account creation timestamp claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: identities
+  description: Linked identity providers claim (Auth0 tenant).
+  schemes: [LineageLinkCIAM]
+- scope: api
+  description: Salesforce platform API access (Experience Cloud default).
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+- scope: full
+  description: Full Salesforce platform access (Experience Cloud default).
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+- scope: id
+  description: Salesforce identity URL access.
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+- scope: refresh_token
+  description: Salesforce refresh token issuance.
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+- scope: web
+  description: Salesforce web session access.
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+- scope: chatter_api
+  description: Salesforce Chatter/Connect REST API access.
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+- scope: custom_permissions
+  description: Custom permission claims in the token.
+  vendor_default: true
+  schemes: [LineageLinkHelpCommunity]
+vendor_default_scopes_not_enumerated:
+  note: >-
+    The Salesforce Experience Cloud discovery document additionally advertises the
+    stock Salesforce platform scope set (cdp_* Data Cloud scopes, einstein_gpt_api,
+    sfap_api, mcp_api, wave_api, eclair_api, pardot_api, lightning, visualforce,
+    content, interaction_api, chatbot_api, scrt_api, data_cloud_user_claims,
+    user_registration_api, pwdless_login_api, forgot_password). These are Salesforce
+    platform defaults present on every Experience Cloud site and carry no
+    Lineage-specific meaning; they are recorded here rather than listed as Lineage
+    scopes.
+  source: well-known/lineage-linkhelp-openid-configuration.json

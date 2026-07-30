@@ -1,0 +1,79 @@
+generated: '2026-07-19'
+method: derived
+source: >-
+  derived from well-known/lineage-ciam-openid-configuration.json and
+  well-known/lineage-linkhelp-openid-configuration.json plus live domain probes
+  (security/lineage-domain-security.yml)
+caveat: >-
+  Lineage publishes no API and no compliance/certification page that could be
+  verified. The assertions below cover only the identity surface behind the
+  Lineage Link portals and the corporate domain posture. No SOC 2 / ISO 27001 /
+  PCI / HIPAA / FedRAMP certification claim was found on any Lineage-operated
+  host, so no Compliance pointer is emitted.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    Both portal identity services expose RFC 6749 authorization and token
+    endpoints; the Auth0 tenant advertises authorization_code, client_credentials,
+    refresh_token and device_code grants.
+- id: oidc-core
+  conforms: true
+  evidence: >-
+    OpenID Connect discovery documents served at
+    lineage-ciam.us.auth0.com/.well-known/openid-configuration (200) and
+    lineagelinkhelp.onelineage.com/.well-known/openid-configuration (200).
+- id: oidc-discovery
+  conforms: true
+  evidence: Both issuers publish /.well-known/openid-configuration returning 200.
+- id: rfc7636-pkce
+  conforms: true
+  evidence: >-
+    Auth0 tenant advertises code_challenge_methods_supported [S256, plain].
+- id: rfc7009-token-revocation
+  conforms: true
+  evidence: revocation_endpoint present on both issuers.
+- id: rfc8628-device-authorization
+  conforms: true
+  evidence: >-
+    device_authorization_endpoint https://lineage-ciam.us.auth0.com/oauth/device/code
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint present on both issuers.
+- id: rfc7662-token-introspection
+  conforms: true
+  evidence: >-
+    introspection_endpoint present on the Salesforce Experience Cloud issuer.
+- id: rfc8414-oauth-authorization-server-metadata
+  conforms: false
+  evidence: /.well-known/oauth-authorization-server not served (404/401).
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.onelineage.com.
+- id: rfc8615-well-known-api-catalog
+  conforms: false
+  evidence: /.well-known/api-catalog not served.
+- id: hsts
+  conforms: true
+  evidence: >-
+    www.onelineage.com sends Strict-Transport-Security with max-age 31536000.
+- id: dmarc
+  conforms: true
+  evidence: onelineage.com publishes DMARC with policy reject.
+- id: spf
+  conforms: true
+  evidence: onelineage.com publishes an SPF record.
+- id: caa
+  conforms: true
+  evidence: >-
+    onelineage.com publishes CAA issuewild records (amazon.com, amazonaws.com,
+    amazontrust.com, awstrust.com, digicert.com, godaddy.com).
+- id: dnssec
+  conforms: false
+  evidence: No DNSSEC on onelineage.com.
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI, Swagger, GraphQL or AsyncAPI description published.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No public API surface to evaluate.

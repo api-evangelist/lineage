@@ -1,0 +1,61 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of Lineage-operated hosts, 2026-07-19
+notes: >-
+  Lineage (onelineage.com) publishes no public developer or API surface. The only
+  machine-readable discovery documents reachable on Lineage-operated hosts are the
+  OpenID Connect discovery documents behind the two customer-facing portals: the
+  Lineage Link customer identity service (an Auth0 tenant fronted by the custom
+  domain ciam.lineageapps.com) and the Lineage Link Help community (a Salesforce
+  Experience Cloud site). Both discovery documents are platform-standard for their
+  vendor, not Lineage-authored API contracts.
+hosts:
+- host: https://www.onelineage.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /llms.txt
+    status: 403
+  - path: /robots.txt
+    status: 200
+- host: https://ciam.lineageapps.com
+  role: Lineage Link customer identity (CIAM)
+  notes: >-
+    Custom domain in front of an ASP.NET Core relying-party application; it does not
+    serve OIDC discovery itself (requests redirect to the login flow). The upstream
+    identity provider is the Auth0 tenant lineage-ciam.us.auth0.com, confirmed by the
+    302 redirect to https://lineage-ciam.us.auth0.com/authorize.
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 302
+    redirects_to: https://lineage-ciam.us.auth0.com/authorize
+- host: https://lineage-ciam.us.auth0.com
+  role: Auth0 tenant backing Lineage Link customer identity
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: lineage-ciam-openid-configuration.json
+- host: https://lineagelinkhelp.onelineage.com
+  role: Lineage Link Help community (Salesforce Experience Cloud)
+  documents:
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: lineage-linkhelp-openid-configuration.json
+  - path: /.well-known/oauth-authorization-server
+    status: 401
+  - path: /.well-known/security.txt
+    status: 401
+  - path: /.well-known/api-catalog
+    status: 401
+  - path: /.well-known/ai-plugin.json
+    status: 401
+security_txt: null
+api_catalog: null
