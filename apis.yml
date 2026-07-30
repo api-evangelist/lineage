@@ -1,21 +1,60 @@
 aid: lineage
 name: Lineage
-description: 'Lineage is a company surfaced as a portfolio company of d1-capital and added to the API
-  Evangelist network as a stub for enrichment. Sector: logistics. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: 'Lineage, Inc. (Nasdaq: LINE) is the world''s largest temperature-controlled
+  warehousing and logistics REIT, operating a global cold-chain network of more than
+  480 facilities across North America, Europe and Asia-Pacific. It provides cold storage
+  and automated warehousing, blast freezing, food manufacturing and processing support,
+  direct-to-consumer fulfillment, and an integrated transportation arm spanning freight
+  forwarding, customs brokerage, drayage, temperature-controlled rail, managed transportation
+  and multi-vendor consolidation. Its customer-facing technology is Lineage Link, a
+  supply chain platform providing real-time visibility into inventory, orders, appointments
+  and shipment status across the facility network, supported by proprietary systems
+  including the Sybil warehouse-optimization algorithm and the Lineage Eye computer-vision
+  receiving system. Lineage publishes no public API, developer portal or API documentation
+  as of 2026-07-19; customer integration runs through Lineage Link and account teams
+  rather than a self-service developer program. This profile therefore captures the
+  verified identity, discovery and domain-security surface rather than an API contract.'
 url: https://raw.githubusercontent.com/api-evangelist/lineage/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://www.onelineage.com/themes/custom/lineage_custom_new/assets/lineage_logo.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - d1-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: no-public-api-surface
+x-enrichment-finding: >-
+  Enrichment run 2026-07-19 found no OpenAPI/AsyncAPI/GraphQL spec, no developer
+  portal, no SDKs or packages on any registry, no CLI, no MCP server, no webhook
+  catalog, no sandbox, no changelog, no status page and no security.txt. The only
+  machine-readable surface is the OpenID Connect discovery behind the Lineage Link
+  customer portal (Auth0 tenant lineage-ciam.us.auth0.com via ciam.lineageapps.com)
+  and the Lineage Link Help community (Salesforce Experience Cloud).
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Logistics
+- Cold Chain
+- Warehousing
+- Supply Chain
+- Temperature Controlled
+- Freight
+- Transportation
+- Food and Beverage
+- REIT
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +64,66 @@ maintainers:
 common:
 - type: Website
   url: https://www.onelineage.com
+- type: Product
+  name: Lineage Link
+  url: https://www.onelineage.com/lineage-link
+- type: Services
+  url: https://www.onelineage.com/services
+- type: Support
+  name: Lineage Link Help
+  url: https://lineagelinkhelp.onelineage.com/support/s/
+- type: Login
+  name: Customer login
+  url: https://www.onelineage.com/customer-login
+- type: Blog
+  name: News and stories
+  url: https://www.onelineage.com/news-stories
+- type: Contact
+  url: https://www.onelineage.com/contact
+- type: ContactSales
+  url: https://www.onelineage.com/contact-sales
+- type: TermsOfService
+  url: https://www.onelineage.com/terms-and-conditions
+- type: PrivacyPolicy
+  url: https://www.onelineage.com/privacy-notice
+- type: CookiePolicy
+  url: https://www.onelineage.com/cookie-policy
+- type: EthicsCompliance
+  url: https://www.onelineage.com/ethics-compliance
+- type: InvestorRelations
+  url: https://ir.onelineage.com/overview/default.aspx
+- type: Careers
+  url: https://careers.onelineage.com/
+- type: About
+  url: https://www.onelineage.com/about-us
+- type: Technology
+  name: Innovation and Technology
+  url: https://www.onelineage.com/about-us/innovation-technology
+- type: LinkedIn
+  url: https://www.linkedin.com/company/onelineage/
+- type: Twitter
+  url: https://twitter.com/onelineage
+- type: YouTube
+  url: https://www.youtube.com/channel/UCKrT_DOlm4icKdCJ7qNdTgg
+- type: Facebook
+  url: https://www.facebook.com/lineagelogistics
+- type: Instagram
+  url: https://www.instagram.com/onelineage/
+- type: Authentication
+  name: Identity profile (Lineage Link portals)
+  url: authentication/lineage-authentication.yml
+- type: OAuthScopes
+  url: scopes/lineage-scopes.yml
+- type: WellKnown
+  url: well-known/lineage-well-known.yml
+- type: Conformance
+  url: conformance/lineage-conformance.yml
+- type: DomainSecurity
+  url: security/lineage-domain-security.yml
+- type: LLMsTxt
+  url: llms/lineage-llms.txt
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
