@@ -41,7 +41,7 @@ x-enrichment-finding: >-
   machine-readable surface is the OpenID Connect discovery behind the Lineage Link
   customer portal (Auth0 tenant lineage-ciam.us.auth0.com via ciam.lineageapps.com)
   and the Lineage Link Help community (Salesforce Experience Cloud).
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-19'
 tags:
